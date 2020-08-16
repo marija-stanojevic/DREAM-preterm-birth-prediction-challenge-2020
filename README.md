@@ -2,7 +2,7 @@
 <h4>Sub-challenge 2</h4>
 
 Team: Team ZO
-Authors: Hannah Kim<sup>[^1], Marija Stanojevic[^2], Zoran Obradovic[^2]
+Authors: Hannah Kim[^1], Marija Stanojevic[^2], Zoran Obradovic[^2]
 [^1]: Bioinformatics Program, Temple University
 [^2]: Computer and Information Sciences Department, Temple University
 
