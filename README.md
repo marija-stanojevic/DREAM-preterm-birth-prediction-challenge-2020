@@ -1,11 +1,10 @@
 <h2> Writeup for DREAM Preterm Birth Prediction Challenge, Transcriptomics </h2>
 <h4>Sub-challenge 2</h4>
+<h4> Team ZO </h4>
 
-Team: Team ZO
 Authors: Hannah Kim<sup>1</sup>, Marija Stanojevic<sup>2</sup>, Zoran Obradovic<sup>2</sup>
 
-1: Bioinformatics Program, Temple University
-2: Computer and Information Sciences Department, Temple University
+1 Bioinformatics Program, Temple University; 2 Computer and Information Sciences Department, Temple University
 
 
 <h3> Summary </h3>
@@ -34,6 +33,7 @@ We first obtained our genes of interest from a volcano plot by comparing the con
 **Figure 2.** Volcano plot showing genes that significantly distinguish Control and Disease (sPTD and PPROM). The left is from Control vs sPTD and the right is from Control vs PPROM. The genes colored in red were found by automatically applying thresholds and finding outliers based on the standard deviation.
 
 Using the genes obtained from the volcano plot, we trained our denoising autoencoder. Because we are not looking at the labels yet, we trained our model using gene expression data from both training and test/validation sets to maximize the data utility. The activation function 'relu' and the optimization function 'adam' were used because they were generally considered the best for the unknown data. The parameters were tuned to optimize the model. The model was evaluated using Spearman correlation, Pearson correlation, Kendall correlation, Euclidean distance, and Mean Squared Error between the autoencoder predicted data and the original data. When tested with different parameters, the 7-layer autoencoder has the highest correlation, the lowest Euclidean distance, and the lowest mean squared error (Figure 3).
+
 ![Figure 3.](fig3.png)
 **Figure 3.** Autoencoder with different parameters. (x-axis) 1 indicates the result from 7-layer autoencoder; 2 indicates the result from 5-layer autoencoder; 3 indicates the result from 3-layer autoencoder; 4 indicates 1 with Noise=0.2. (a) Mean correlations by Spearman (blue), Pearson (green), Kendall (red) (b) Mean Euclidean distance (c) Averaged Mean Squared Error
 
@@ -46,13 +46,16 @@ To show that our model can make a reasonable prediction, we ran our models 600 t
 
 <h3> Conclusion/Discussion </h3>
 
-In Team\ ZO_prediction.csv, we provided our validation prediction result from the models that give: sPTD AUC of 0.925, sPTD AUPR of 0.739, sPTD Mean of 0.832, PPROM AUC of 0.972, PPROM AUPR of 0.75, and PPROM Mean of 0.861. Initially, we expected Random Forest Classifier to produce the best result since it is the most complex model that uses an ensemble approach. However, our best classifiers were logistic regression and Support Vector Machine. Seeing this result, we conclude that the strength of our approach comes from the dimensionality reduction with denoising autoencoder. The code layer captures the essence of the significant genes so that the classifier training is improved.
+In Team_ZO_prediction.csv, we provided our validation prediction result from the models that give: sPTD AUC of 0.925, sPTD AUPR of 0.739, sPTD Mean of 0.832, PPROM AUC of 0.972, PPROM AUPR of 0.75, and PPROM Mean of 0.861. Initially, we expected Random Forest Classifier to produce the best result since it is the most complex model that uses an ensemble approach. However, our best classifiers were logistic regression and Support Vector Machine. Seeing this result, we conclude that the strength of our approach comes from the dimensionality reduction with denoising autoencoder. The code layer captures the essence of the significant genes so that the classifier training is improved.
 
 <h3> References </h3>
 
 [1] DREAM Preterm Birth Prediction Challenge, Transcriptomics Challenge (syn18380862)
+
 [2] Pedregosa, F., Varoquaux, Ga"el, Gramfort, A., Michel, V., Thirion, B., Grisel, O., et al. others. "Scikit-learn: Machine learning in Python." Journal of Machine Learning Research, vol 12, 2011.
+
 [3] Chollet, F. (2015) keras, GitHub. https://github.com/fchollet/keras
+
 [4] Wei, Jin-Huan, et al. “A CpG-Methylation-Based Assay to Predict Survival in Clear Cell Renal Cell Carcinoma.” Nature Communications, vol. 6, no. 1, 2015, doi:10.1038/ncomms9699.
 
 <h3> Authors Statement </h3>
